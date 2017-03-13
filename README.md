@@ -3,7 +3,8 @@ Ansible Role to install bdocker in a cluster
 
 
 ## Inventory file sample:
-
+<pre>
+ <code>
 [ui]
 cluster-ui bdocker_role="client"
 
@@ -16,9 +17,13 @@ cluster-wn02 bdocker_role="working"
 
 [storage]
 st
-
+ </code>
+</pre>
 
 ## How to add this role to your playbook
+
+<pre>
+ <code>
 
  - name: Install bdocker
    hosts: all
@@ -26,5 +31,6 @@ st
 
    roles:
    - { role: ansible-role-bdocker, tags: [ 'bdocker' ] }
-
+   </code>
+  </pre>
 
