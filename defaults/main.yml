@@ -1,2 +1,48 @@
 ---
 # defaults file for ansible-role-bdocker
+#
+# by Alves @ LIP 2017
+
+# Change this to "True" if you want your nodes' packages to be upgraded to the latest available
+update_os: "False"
+
+### Server settings ###
+
+server_hostname: "localhost"
+server_wn_port: 5000
+server_acc_port: 5002
+# Pick one from ERROR, DEBUG, ?
+server_wn_logging: "ERROR"
+server_acc_logging: "DEBUG"
+server_wns_nr: 2
+server_timeout: 200
+
+### Working Node Daemon ###
+
+# Pick from SGEWNController, Slurm, Torque
+WND_batchCtrl: "SGEWNController"
+WND_enablecgroups: True
+WND_cgroups_dir: "/sys/fs/cgroup"
+WND_parent_cgroup: "/user"
+WND_accounting_endpoint: "http://localhost:5002"
+WND_include_wallclock: True
+WND_only_docker_accounting: True
+
+WND_cred_controller: "TokenController"
+WND_cred_token_store: "/etc/token_store.yml"
+WND_cred_token_client_file: ".bdocker_token"
+
+WND_base_url: "unix://var/run/docker.sock"
+
+### Accounting Node Daemon ###
+
+# SGEAccountingController (add more modules)
+AND_controller: "SGEAccountingController"
+AND_bdocker_accounting: "/home/jorge/bdocker_accounting"
+
+AND_cred_controller: "TokenController"
+AND_cred_token_store: "/etc/token_store.yml"
+
+### Command Line Client ###
+
+

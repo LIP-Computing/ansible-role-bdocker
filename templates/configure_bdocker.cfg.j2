@@ -1,0 +1,55 @@
+{% if bdocker_role == "working" %}  
+
+[resource]
+
+role = working
+
+[server]
+host = "http://{{ server_hostname }}"
+port = "{{ server_wn_port }}"
+logging = "{{ server_wn_logging }}"
+workers = "{{ server_wns_nr }}"
+time_out = "{{ server_timeout }}"
+
+[batch]
+# controller can be: SGEWNController (add more modules)
+controller = SGEWNController
+enable_cgroups = True
+cgroups_dir = /sys/fs/cgroup
+parent_cgroup = /user
+accounting_endpoint = http://localhost:5002
+include_wallclock = True
+only_docker_accounting = True
+
+[credentials]
+controller = TokenController
+token_store = /etc/token_store.yml
+token_client_file = .bdocker_token
+
+[dockerAPI]
+base_url = unix://var/run/docker.sock
+
+{% endif %}
+
+{% if bdocker_role == "accounting" %}  
+
+[resource]
+role = accounting
+
+[server]
+host = "http://{{ server_hostname }}"
+port = "{{ server_acc_port }}"
+logging = "{{ server_acc_logging }}"
+workers = "{{ server_wns_nr }}"
+time_out = "{{ server_timeout }}"
+
+[batch]
+# controller can be: SGEAccountingController (add more modules)
+controller = SGEAccountingController
+bdocker_accounting=/home/jorge/bdocker_accounting
+
+[credentials]
+controller = TokenController
+token_store = /etc/token_store.yml
+
+{% endif %}
