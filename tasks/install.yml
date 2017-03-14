@@ -45,3 +45,20 @@
      group: root
      mode: 0644
   when: ansible_hostname in groups['wn']
+
+- name: reload daemons
+  command: systemctl daemon-reload 
+
+- name: enable bdocker.service
+  service:
+     name: bdocker
+     enabled: yes
+  when: ansible_hostname in groups['frontend'] or ansible_hostname in groups['wn']
+
+- name: start/restart bdocker.service
+  service:
+     name: bdocker
+     state: restarted
+  when: ansible_hostname in groups['frontend'] or ansible_hostname in groups['wn']
+
+

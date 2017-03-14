@@ -1,5 +1,7 @@
 # ansible-role-bdocker
 Ansible Role to install bdocker in a cluster
+At this point in time, this role assumes that you are working with systemd enabled OSs.
+
 
 ## Inventory file sample:
 <pre>
