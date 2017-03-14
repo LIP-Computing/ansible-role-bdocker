@@ -1,0 +1,10 @@
+[Unit]
+Description=Bdocker daemon for controlling container execution in the accounting server.
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python /usr/lib/python2.7/site-packages/bdocker/middleware/accounting.py 
+
+[Install]
+WantedBy=multi-user.target

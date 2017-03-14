@@ -27,3 +27,21 @@
      owner: root
      group: root
      mode: 0644
+
+- name: copy service files [accounting]
+  copy:
+     src: files/acc_bdocker.service
+     dest: /lib/systemd/system/bdocker.service
+     owner: root
+     group: root
+     mode: 0644
+  when: ansible_hostname in groups['frontend']
+
+- name: copy service files [working]
+  copy:
+     src: files/wn_bdocker.service
+     dest: /lib/systemd/system/bdocker.service
+     owner: root
+     group: root
+     mode: 0644
+  when: ansible_hostname in groups['wn']
