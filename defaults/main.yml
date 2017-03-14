@@ -37,7 +37,7 @@ WND_base_url: "unix://var/run/docker.sock"
 
 # SGEAccountingController (add more modules)
 AND_controller: "SGEAccountingController"
-AND_bdocker_accounting: "/home/jorge/bdocker_accounting"
+AND_bdocker_accounting: "/root/bdocker_accounting"
 
 AND_cred_controller: "TokenController"
 AND_cred_token_store: "/etc/token_store.yml"
