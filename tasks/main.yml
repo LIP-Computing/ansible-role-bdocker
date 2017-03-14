@@ -1,13 +1,5 @@
 ---
 # tasks file for ansible-role-bdocker
 
-- name: update all [RedHat]
-  yum:
-     name: '*'
-     state: latest 
-  when: ansible_os_family == "RedHat" and update_os == "True"
-
-- name: update all [Debian]
-  apt:
-     upgrade: dist
-  when: ansible_os_family == "Debian" and update_os == "True"
+- name: install and configure bdocker
+  include: install.yml

@@ -1,4 +1,4 @@
-{% if bdocker_role == "working" %}  
+{% if groups['wn'] %}  
 
 [resource]
 
@@ -13,25 +13,25 @@ time_out = "{{ server_timeout }}"
 
 [batch]
 # controller can be: SGEWNController (add more modules)
-controller = SGEWNController
-enable_cgroups = True
-cgroups_dir = /sys/fs/cgroup
-parent_cgroup = /user
-accounting_endpoint = http://localhost:5002
-include_wallclock = True
-only_docker_accounting = True
+controller = "{{ WND_batchCtrl }}
+enable_cgroups = "{{ WND_enablecgroups }}"
+cgroups_dir = "{{ WND_cgroups_dir }}"
+parent_cgroup = "{{ WND_parent_cgroup }}"
+accounting_endpoint = "{{ WND_accounting_endpoint }}"
+include_wallclock = "{{ WND_include_wallclock }}"
+only_docker_accounting = "{{ WND_only_docker_accounting }}"
 
 [credentials]
-controller = TokenController
-token_store = /etc/token_store.yml
-token_client_file = .bdocker_token
+controller = "{{ WND_cred_controller }}"
+token_store = "{{ WND_cred_token_store }}"
+token_client_file = "{{ WND_cred_token_client_file }}"
 
 [dockerAPI]
-base_url = unix://var/run/docker.sock
+base_url = "{{ WND_base_url }}"
 
 {% endif %}
 
-{% if bdocker_role == "accounting" %}  
+{% if groups['frontend'] %}  
 
 [resource]
 role = accounting
@@ -45,11 +45,11 @@ time_out = "{{ server_timeout }}"
 
 [batch]
 # controller can be: SGEAccountingController (add more modules)
-controller = SGEAccountingController
-bdocker_accounting=/home/jorge/bdocker_accounting
+controller = "{{ AND_controller }}"
+bdocker_accounting="{{ AND_bdocker_accounting }} "
 
 [credentials]
-controller = TokenController
-token_store = /etc/token_store.yml
+controller = "{{ AND_cred_controller }}"
+token_store = "{{ AND_cred_token_store }}"
 
 {% endif %}

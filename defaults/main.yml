@@ -3,8 +3,7 @@
 #
 # by Alves @ LIP 2017
 
-# Change this to "True" if you want your nodes' packages to be upgraded to the latest available
-update_os: "False"
+backup_conf_files: "yes"
 
 ### Server settings ###
 

@@ -1,0 +1,10 @@
+---
+
+- name: Write configuration file
+  template: 
+     src: templates/configure_bdocker.cfg.j2
+     dest: /etc/configure_bdocker.cfg
+     backup: "{{ backup_conf_files }}"
+     owner: root
+     group: root
+     mode: 0644
