@@ -7,18 +7,18 @@ At this point in time, this role assumes that you are working with systemd enabl
 <pre>
  <code>
 [ui]
-cluster-ui bdocker_role="client"
+cluster-ui
 
 [frontend]
-cluster bdocker_role="accounting"
+cluster
 
 [wn]
-cluster-wn01 bdocker_role="working"
-cluster-wn02 bdocker_role="working"
+cluster-wn[01:02]
 
 [storage]
 st
- </code>
+
+ <code>
 </pre>
 
 ## How to add this role to your playbook

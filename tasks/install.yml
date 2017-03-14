@@ -53,12 +53,11 @@
   service:
      name: bdocker
      enabled: yes
-  when: ansible_hostname in groups['frontend'] or ansible_hostname in groups['wn']
+  when: (ansible_hostname in groups['wn']) or (ansible_hostname in groups['frontend'])
 
 - name: start/restart bdocker.service
   service:
      name: bdocker
      state: restarted
-  when: ansible_hostname in groups['frontend'] or ansible_hostname in groups['wn']
-
-
+  when: (ansible_hostname in groups['wn']) or (ansible_hostname in groups['frontend'])
+ 
