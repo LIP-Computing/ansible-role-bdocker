@@ -6,9 +6,19 @@
 - name: get bdocker from github
   git:
     repo: https://github.com/indigo-dc/bdocker.git
-    dest: /opt/bdocker
+    dest: "{{ install_dir }}"
     version: master
-  
+
+- name: install bdocker requirements
+  pip:
+     chdir: "{{ install_dir }}"
+     requirements: requirements.txt
+
+- name: install bdocker
+  pip:
+     name: .
+     chdir: "{{ install_dir }}"
+
 - name: Write configuration file
   template: 
      src: templates/configure_bdocker.cfg.j2

@@ -4,6 +4,7 @@
 # by Alves @ LIP 2017
 
 backup_conf_files: "yes"
+install_dir: "/tmp/docker"
 
 ### Server settings ###
 
