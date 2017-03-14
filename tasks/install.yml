@@ -1,5 +1,16 @@
 ---
 
+- name: verify pip installation
+  include: install-pip.yml
+
+- name: Make temporary bdocker directory in /opt
+  file: 
+     path: /opt/bdocker
+     owner: root
+     group: root
+     mode: 0755
+     state: directory
+  
 - name: Write configuration file
   template: 
      src: templates/configure_bdocker.cfg.j2
