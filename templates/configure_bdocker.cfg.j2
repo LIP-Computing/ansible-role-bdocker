@@ -4,29 +4,29 @@
 role = working
 
 [server]
-host = "http://{{ server_hostname }}"
-port = "{{ server_wn_port }}"
-logging = "{{ server_wn_logging }}"
-workers = "{{ server_wns_nr }}"
-time_out = "{{ server_timeout }}"
+host = {{ server_hostname }}
+port = {{ server_wn_port }}
+logging = {{ server_wn_logging }}
+workers = {{ server_wns_nr }}
+time_out = {{ server_timeout }}
 
 [batch]
 # controller can be: SGEWNController (add more modules)
-controller = "{{ WND_batchCtrl }}"
-enable_cgroups = "{{ WND_enablecgroups }}"
-cgroups_dir = "{{ WND_cgroups_dir }}"
-parent_cgroup = "{{ WND_parent_cgroup }}"
-accounting_endpoint = "{{ WND_accounting_endpoint }}"
-include_wallclock = "{{ WND_include_wallclock }}"
-only_docker_accounting = "{{ WND_only_docker_accounting }}"
+controller = {{ WND_batchCtrl }}
+enable_cgroups = {{ WND_enablecgroups }}
+cgroups_dir = {{ WND_cgroups_dir }}
+parent_cgroup = {{ WND_parent_cgroup }}
+accounting_endpoint = {{ WND_accounting_endpoint }}
+include_wallclock = {{ WND_include_wallclock }}
+only_docker_accounting = {{ WND_only_docker_accounting }}
 
 [credentials]
-controller = "{{ WND_cred_controller }}"
-token_store = "{{ WND_cred_token_store }}"
-token_client_file = "{{ WND_cred_token_client_file }}"
+controller = {{ WND_cred_controller }}
+token_store = {{ WND_cred_token_store }}
+token_client_file = {{ WND_cred_token_client_file }}
 
 [dockerAPI]
-base_url = "{{ WND_base_url }}"
+base_url = {{ WND_base_url }}
 
 
 {% endif %}
@@ -36,20 +36,20 @@ base_url = "{{ WND_base_url }}"
 role = accounting
 
 [server]
-host = "http://{{ server_hostname }}"
-port = "{{ server_acc_port }}"
-logging = "{{ server_acc_logging }}"
-workers = "{{ server_wns_nr }}"
-time_out = "{{ server_timeout }}"
+host = {{ server_hostname }}
+port = {{ server_acc_port }}
+logging = {{ server_acc_logging }}
+workers = {{ server_wns_nr }}
+time_out = {{ server_timeout }}
 
 [batch]
 # controller can be: SGEAccountingController (add more modules)
-controller = "{{ AND_controller }}"
-bdocker_accounting="{{ AND_bdocker_accounting }}"
+controller = {{ AND_controller }}
+bdocker_accounting = {{ AND_bdocker_accounting }}
 
 [credentials]
-controller = "{{ AND_cred_controller }}"
-token_store = "{{ AND_cred_token_store }}"
+controller = {{ AND_cred_controller }}
+token_store = {{ AND_cred_token_store }}
 
 {% endif %}
 
